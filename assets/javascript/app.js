@@ -1,0 +1,1 @@
+$("#display").html("Time Remaining: 00:00");
