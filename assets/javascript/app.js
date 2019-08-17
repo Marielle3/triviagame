@@ -11,7 +11,8 @@ var trivia = {
   correct: 0,
   incorrect: 0,
   unanswered: 0,
-  time: 10,
+  gameSet= 0,
+  timer: 10,
   timerId: '',
 
   questions: {
@@ -39,15 +40,49 @@ clearInterval(trivia.timerId);
 
 //game section 
 $('#game').show();
-$('#results').html('';)
+$('#results').html('');
 $('#timer').text(trivia.timer);
 
 //remove the start button 
+$('#start').hide();
 
+$('#remaining-time').show();
+
+trivia.nextQuestion();
+},
+
+nextQuestion : function(){
+  //setting timer to 10 sec per question
+  trivia.timer = 10;
+  $('#timer').removeClass('last-seconds');
+  $('#timer').text(trivia.timer);
+
+//10 second interval
+  if(!trivia.timerOn){
+    trivia.timerId = setInterval(trvia.timerRunning, 1000);
+  }
+
+//provides all the questions and indexes the current question
+var questionContent = Object.values(trivia.questions)[trivia.gameSet];
+$('#question').text(questionContent);
+
+var questionOptions = Object.values(trivia.options)[trivia.gameSet];
+
+$.each(questionOptions, function(index, key){
+  $('#options').append($('<button class="option btn btn-info btn-lg">' + key + '</button>'));
+})
+
+},
+
+//decrement counter
+countDown : function(){
+if(trivia.timer > -1 && trivia.gameSet < Object.keys(trivia.questions).length){
+  $('#timer').text(trivia.timer);
+  trivia.timer--;
+    if(trivia.timer === 4){
+      $('#timer'.addClass('last-seconds');
+    }
 }
-};
-
-function decrement(){
 
   time--;
 
