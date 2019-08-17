@@ -1,26 +1,51 @@
 $(document).ready(function() {
-//providing a function for the count down to begin starting at 10 seconds.
-//created function to run the time and countdown, giving alert to time's up, and resetting the clock
-$("#display-time").html("Time Remaining: 10");
+
+//event listeners
+$("#display-time").hide();
+$('#start').on('click', trivia.startGame);
+$(document).on('click', '.option', trivia.guessChecker);
+
 })
+//trivia properties
 var trivia = {
+  correct: 0,
+  incorrect: 0,
+  unanswered: 0,
   time: 10,
   timerId: '',
 
   questions: {
     q1: "Where is Loki's sceptre ultimately located?",
     q2: "Which of the following Avengers from the comics is not in the movie?",
-    q3: "Who does Captain America call Earth's best defender?",
+    q3: "Who does Captain America call Earth's best defender?"
   },
-}
+  options: {
+    q1: ['Sokovia', 'Thanos', 'America'],
+    q2: ['Captain America', 'The Wasp', 'Hawkeye'],
+    q3: ['Spider Man', 'Hulk', 'Iron Man']
+  },
+  answers: {
+    q1: 'Sokovia',
+    q2: 'The Wasp',
+    q3: 'Iron Man'
+  },
 
+//functions to start the game
+  startGame: function run() {
+trivia.correct = 0;
+trivia.incorrect = 0;
+trivia.unanswered = 0;
+clearInterval(trivia.timerId);
 
-function run() {
-  if (!clockRunning){
-  intervalId = setInterval(decrement, 1000);
-  clockRunning = true;
+//game section 
+$('#game').show();
+$('#results').html('';)
+$('#timer').text(trivia.timer);
+
+//remove the start button 
+
 }
-}
+};
 
 function decrement(){
 
@@ -43,18 +68,3 @@ function stop(){
 
 run();
 
-// <!-- Creating trivia questions-->
-// <h3>Where is Loki's sceptre ultimately located?
-//   <p>Sokovia</p> <!--Answer-->
-//   <p>Thanos</p>
-//   <p>America</p>
-//   <h3>Which of the following Avengers from the comics is not in the movie?
-//       <p>Captain America</p>
-//       <p>The Wasp</p> <!--Answer-->
-//       <p>Hawkeye</p>
-// </h3>
-// <h3>Who does Captain America call "Earth's best defender?"
-//     <p>Spider Man</p>
-//     <p>Hulk</p> 
-//     <p>Iron Man</p><!--Answer-->
-// </h3>
