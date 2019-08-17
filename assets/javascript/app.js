@@ -49,6 +49,7 @@ $('#start').hide();
 $('#remaining-time').show();
 
 trivia.nextQuestion();
+
 },
 
 nextQuestion : function(){
@@ -80,26 +81,32 @@ if(trivia.timer > -1 && trivia.gameSet < Object.keys(trivia.questions).length){
   $('#timer').text(trivia.timer);
   trivia.timer--;
     if(trivia.timer === 4){
-      $('#timer'.addClass('last-seconds');
+      $('#timer').addClass('last-seconds');
     }
 }
-
-  time--;
-
-  $('#display-time').html('<h2>' + time + '</h2>')
-  
-  if (time === 0) {
-
-    stop();
-
-    alert("Time's Up!")
-  }
+    
+// if no answer is given 
+else if(trivia.timer === -1){
+  trivia.unanswered++;
+  trivia.result = false;
+  clearInterval(trivia.timerId);
+  resultId = setTimeout(trivia.guessResult, 1000);
+  $('#results').html('<h3>Earth has been destroyed! The answers were' + Object.values(trivia.answers)[trivia.gameSet] +'</h3>');
 }
 
-function stop(){
-  
-  clearInterval(intervalId);
+//game is done, show the results 
+else if(trivia.gameSet === Object.keys(trivia.questions).length){
+
+$('#results').html('<h3>Thanks for playing!</h3>') + '<p> Correct: ' + trivia.correct +'</p>'
++'<p>Incorrect: '+ trivia.incorrect +'</p>' +
+'<p>Unanswered: '+ trivia.unanswered +'</p>' +
+'<p>Save the Plane</p>');
+
+//hide game
+$('#game').hide();
+
+//Show start game to play again 
+$("#start").show();
+
 }
-
-run();
-
+},
