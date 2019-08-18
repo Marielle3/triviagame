@@ -64,7 +64,7 @@ nextQuestion : function(){
 
 
   if(!trivia.timerOn){
-    trivia.timerId = setInterval(trivia.timerRunning, 1000);
+    trivia.timerId = setInterval(trivia.countDown, 1000);
   }
 
 //creating variables for the questions to be stored into and 
@@ -116,7 +116,7 @@ $('#game').hide();
 //Show start button game to play again 
 $("#start").show();
 
-}
+  } 
 },
 //method to evaluate the options clicked 
 guessChecker: function() {
@@ -141,7 +141,7 @@ guessChecker: function() {
       $('#results').html('<h3>You got hit by an asteroid '+ currentAnswer +'</h3>');
   }
 },
-
+// show the results of the players score and then restart the game 
 guessResult: function(){
   trivia.gameSet++;
 
