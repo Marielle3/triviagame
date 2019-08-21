@@ -5,32 +5,83 @@ var trivia = {
   incorrect: 0,
   unanswered: 0,
   timer: 10,
+  questions: [
+    {
+      id: 'Question-A',
+      description: 'Where is Loki\'s main land?',
+      answers: [
+        { 
+          id: 'Answer-A1',
+          response: 'Sokovia',
+          correct: true
+        },   
+        { 
+          id: 'Answer-A2',
+          response: 'Thanos',
+          correct: false
+        },   
+        { 
+          id: 'Answer-A3',
+          response: 'America',
+          correct: false
+        }
+      ]
+    },
+    {
+      id: 'Question-B',
+      description: 'Which of the following Avengers from the comics is not in the movie?',
+      answers: [
+        { 
+          id: 'Answer-B1',
+          response: 'The Wasp',
+          correct: true
+        },   
+        { 
+          id: 'Answer-B1',
+          response: 'Captain America',
+          correct: false
+        },   
+        { 
+          id: 'Answer-B1',
+          response: 'Hawkeye',
+          correct: false
+        }
+      ]
+    },
+    {
+      id: 'Question-C',
+      description: 'Which of the following Avengers from the comics is not in the movie?',
+      answers: [
+        { 
+          id: 'Answer-C1',
+          response: 'The Wasp',
+          correct: true
+        },   
+        { 
+          id: 'Answer-C1',
+          response: 'Captain America',
+          correct: false
+        },   
+        { 
+          id: 'Answer-C1',
+          response: 'Hawkeye',
+          correct: false
+        }
+      ]
+    }
+  ],
+  
+  
+  //functions to start the game
+  startGame: function run() {
+    trivia.correct = 0;
+    trivia.incorrect = 0;
+    trivia.unanswered = 0;
+  }
 
- 
-//created set of questions for the trivia game
-  question: {
-    q1: "Where is Loki's sceptre ultimately located?",
-    q2: "Which of the following Avengers from the comics is not in the movie?",
-    q3: "Who does Captain America call Earth's best defender?"
-  },
-  //options of answers for the Player to choose from 
-  multipleChoices: {
-    q1: ['Sokovia', 'Thanos', 'America'],
-    q2: ['Captain America', 'The Wasp', 'Hawkeye'],
-    q3: ['Spider Man', 'Hulk', 'Iron Man']
-  },
-  //Correct answers to the questions 
-  answer: {
-    q1: 'Sokovia',
-    q2: 'The Wasp',
-    q3: 'Iron Man'
-  },
-
-//functions to start the game
-startGame: function run() {
-trivia.correct = 0;
-trivia.incorrect = 0;
-trivia.unanswered = 0;
-
-
-
+}
+$(function() {
+  $( "#start" ).click(function() {
+    $( "#question" ).show();
+  });
+});
