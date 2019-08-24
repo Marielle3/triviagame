@@ -1,4 +1,3 @@
-
 //trivia properties
 var trivia = {
   correct: 0,
@@ -50,21 +49,21 @@ var trivia = {
     },
     {
       id: 'Question-C',
-      description: 'Which of the following Avengers from the comics is not in the movie?',
+      description: 'Who does Captain America call Earth\'s best defender?',
       answers: [
         { 
           id: 'Answer-C1',
-          response: 'The Wasp',
+          response: 'Iron Man',
           correct: true
         },   
         { 
           id: 'Answer-C1',
-          response: 'Captain America',
+          response: 'Hulk',
           correct: false
         },   
         { 
           id: 'Answer-C1',
-          response: 'Hawkeye',
+          response: 'Thor',
           correct: false
         }
       ]
